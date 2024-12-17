@@ -12,12 +12,13 @@ namespace Basis.Service.Cashin.Api.Client.Test
 {
     public class UnitTestTransactionController
     {
-        private const string _key = "Key313";
-        private const string _channelCode = "numus";
+        private const string _key = "";//გასაღები
+        private const string _channelCode = "";//არხის კოდი
         private readonly ICashinApiClient _client;
+
         public UnitTestTransactionController()
         {
-            _client = new CashinApiClient("http://192.168.150.14:8013/", new CashinApiFactory());
+            _client = new CashinApiClient("შეცვალეთ ip მისამართით. მაგ: http://1.1.1.1:1111/", new CashinApiFactory());
         }
 
 
@@ -65,7 +66,7 @@ namespace Basis.Service.Cashin.Api.Client.Test
                 PayerVerifyData = new PayerInfoRequest() { IdentityNumber = "01011021510", VerificationId = "1212" },
                 ServiceCode = Contract.Enums.ServicesEnum.Deposits,
                 Purpose = "0",
-                TransactionId = $"Numus_{transactionId}",
+                TransactionId = $"Tran_{transactionId}",//Tran შეცვალეთ თქვენ ტრანზაქციის პრეფიქსით. სასურველია არხის კოდი.
             };
 
 
