@@ -46,8 +46,8 @@ namespace Basis.Service.Cashin.Api.Client.Test
             var headers = GenerateHeaders(_channelCode, requestId, token);
             var resp = _client.CheckAsync(request, headers).Result;
             var result = resp;
-            Assert.IsNotNull(result);
-            Assert.IsTrue(result.ClientNo > 0);
+            Assert.That(result != null);
+            Assert.That(result.ClientNo > 0);
 
         }
 
@@ -79,8 +79,8 @@ namespace Basis.Service.Cashin.Api.Client.Test
             var resp = _client.RegisterAsync(request, headers).Result;
 
             var result = resp;
-            Assert.IsNotNull(result);
-            Assert.IsTrue(result.TransactionId > 0);
+            Assert.That(result!=null);
+            Assert.That(result.TransactionId > 0);
         }
 
         private IDictionary<string, string> GenerateHeaders(string channelCode, Guid requestId, string token)
