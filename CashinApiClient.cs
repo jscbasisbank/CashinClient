@@ -17,23 +17,23 @@ namespace Basis.Service.Cashin.Client
 
       
 
-        public async Task<AccountsResponse> AccountsAsync(AccountRequest request)
+        public async Task<AccountsResponse> AccountsAsync(AccountRequest request, [Refit.HeaderCollection] IDictionary<string, string> headers)
         {
-            var response = await _cashinApi.Accounts(request);
+            var response = await _cashinApi.Accounts(request, headers);
 
             return response;
         }
 
-        public async Task<ClientResponse> CheckAsync(ClientCheckRequest request)
+        public async Task<ClientResponse> CheckAsync(ClientCheckRequest request, [Refit.HeaderCollection] IDictionary<string, string> headers)
         {
-            var response = await _cashinApi.Check(request);
+            var response = await _cashinApi.Check(request, headers);
 
             return response;
         }
 
-        public async Task<CurrencyRatesResponse> CurrencyRatesAsync()
+        public async Task<CurrencyRatesResponse> CurrencyRatesAsync([Refit.HeaderCollection] IDictionary<string, string> headers)
         {
-            var response = await _cashinApi.CurrencyRates();
+            var response = await _cashinApi.CurrencyRates(headers);
 
             return response;
         }
@@ -45,9 +45,9 @@ namespace Basis.Service.Cashin.Client
             return response;
         }
 
-        public async Task<TransactionStatusResponse> StatusCheckAsync(string trasactionId)
+        public async Task<TransactionStatusResponse> StatusCheckAsync(string trasactionId, [Refit.HeaderCollection] IDictionary<string, string> headers)
         {
-            var response = await _cashinApi.StatusCheck(trasactionId);
+            var response = await _cashinApi.StatusCheck(trasactionId, headers);
 
             return response;
         }

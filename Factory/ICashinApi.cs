@@ -22,7 +22,7 @@ namespace Basis.Service.Cashin.Client
         /// <param name="trasactionId">ქეშინის სისტემის ტრანზაქციის ნომერი</param>
         /// <returns>აბრუნებს ტრანზაციის სტატუსის მონამცენებს</returns>
         [Get("/api/Transaction/StatusCheck?trasactionId={trasactionId}")]
-        Task<TransactionStatusResponse> StatusCheck(string trasactionId);
+        Task<TransactionStatusResponse> StatusCheck(string trasactionId, [Refit.HeaderCollection] IDictionary<string, string> headers);
 
         /// <summary>
         /// კლიენტის შემოწმება
@@ -30,7 +30,7 @@ namespace Basis.Service.Cashin.Client
         /// <param name="request"></param>
         /// <returns>აბრუნებს კლიენტის ინფორმაციას</returns>
         [Post("/api/client/Check")]
-        Task<ClientResponse> Check(ClientCheckRequest request);
+        Task<ClientResponse> Check(ClientCheckRequest request,[Refit.HeaderCollection] IDictionary<string, string> headers);
 
         /// <summary>
         /// კლიენტის ანგარიშების წამოღება
@@ -38,13 +38,13 @@ namespace Basis.Service.Cashin.Client
         /// <param name="request"></param>
         /// <returns>აბრუნებს ანგარიშებს</returns>
         [Post("/api/client/Accounts")]
-        Task<AccountsResponse> Accounts(AccountRequest request);
+        Task<AccountsResponse> Accounts(AccountRequest request, [Refit.HeaderCollection] IDictionary<string, string> headers);
 
         /// <summary>
         /// აბრუნებს ბანკის კურსებს
         /// </summary>
         /// <returns></returns>
         [Post("/api/bank/CurrencyRates")]
-        Task<CurrencyRatesResponse> CurrencyRates();
+        Task<CurrencyRatesResponse> CurrencyRates([Refit.HeaderCollection] IDictionary<string, string> headers);
     }
 }
